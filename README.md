@@ -22,7 +22,7 @@ In all error situations, this program must output errors to stderr as appropriat
 
 This program, and the other 3 network programs, should use localhost as the target IP address/host. This makes them use the actual computer they all share as the target for the networking connections.
 
-### enc_client
+### `enc_client`
 This program connects to enc_server, and asks it to perform a one-time pad style encryption as detailed above. By itself, enc_client doesn’t do the encryption - enc_server does. The syntax of enc_client is as follows:
 
 enc_client plaintext key port
@@ -37,11 +37,11 @@ enc_client should NOT be able to connect to dec_server, even if it tries to conn
 
 Again, any and all error text must be output to stderr (not into the plaintext or ciphertext files).
 
-### dec_server
+### `dec_server`
 This program performs exactly like enc_server, in syntax and usage. In this case, however, dec_server will decrypt ciphertext it is given, using the passed-in ciphertext and key. Thus, it returns plaintext again to dec_client.
 
-### dec_client
+### `dec_client`
 Similarly, this program will connect to dec_server and will ask it to decrypt ciphertext using a passed-in ciphertext and key, and otherwise performs exactly like enc_client, and must be runnable in the same three ways. dec_client should NOT be able to connect to enc_server, even if it tries to connect on the correct port - you’ll need to have the programs reject each other, as described in enc_client.
 
-### keygen
+### `keygen`
 This program creates a key file of specified length. The characters in the file generated will be any of the 27 allowed characters, generated using the standard Unix randomization methods. Do not create spaces every five characters, as has been historically done. Note that you specifically do not have to do any fancy random number generation: we’re not looking for cryptographically secure random number generation. rand is just fine. The last character keygen outputs should be a newline. Any error text must be output to stderr.
